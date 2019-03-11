@@ -1,0 +1,36 @@
+@import 'reset';
+@import '_palette';
+
+@mixin center() {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+
+.App {
+  @include center;
+
+  border:1px solid red;
+  flex-direction: column;
+  width:100%;
+
+  header {
+    @include center;
+    
+    background:green;
+    border:1px solid cyan;
+    width:100%;
+
+    nav {
+      @include center;
+
+      border:1px solid magenta;
+
+      a {
+        line-height:1.5;
+        margin:0 4px;
+      }
+    }
+  }
+}
