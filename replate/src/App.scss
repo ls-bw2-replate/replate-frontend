@@ -9,10 +9,12 @@
 
 .App {
   @include center;
+  // border:1px solid red;
   color:$text-color;
   flex-direction: column;
   line-height:1.5;
-  width:100%;
+  margin:0 auto;
+  max-width:100%;
 
   a {
     color:$link-color;
@@ -33,16 +35,24 @@
     @include center;
     border-bottom:4px solid $ux-secondary;
     margin-bottom:12px;
+    padding:12px;
+    // position:fixed;
+    // top:0;
     width:100%;
   }
 
   main {
     @include center;
+    // border:1px solid red;
+    // justify-content: space-between;
+    justify-content: center;
+    max-width:700px;
     width:90%;
 
-    img {
-      border:1px solid magenta;
-      padding:8px;
+    #big-logo {
+      max-width:400px;
+      width:50%;
     }
+
   }
 }

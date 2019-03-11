@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
 
 import './SignupVolunteer.scss';
 
@@ -24,7 +23,7 @@ export default class SignupVolunteer extends Component {
     handleSubmit = e => {
         e.preventDefault();
         const newVolunteer = {...this.state}
-        console.log(newVolunteer);
+        console.log('newVolunteer',newVolunteer);
     }
 
     render() {
@@ -62,7 +61,7 @@ export default class SignupVolunteer extends Component {
                     value={this.state.cellphone}
                     required />
 
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Go" />
                 <input type="reset"/>
 
                 </form>

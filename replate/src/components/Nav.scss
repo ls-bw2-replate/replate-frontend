@@ -2,8 +2,22 @@
 
 .nav {
     @include center;
+    align-items: flex-start;
     // border:1px solid magenta;
     justify-content: space-between;
     width:90%;
-    
+
+    .nav__left {
+        @include center;
+        // display:block;
+        flex-wrap: wrap;
+        // border:1px solid red;
+        width:100px;
+        // z-index:33;
+    }
+
+    .link--active {
+        color:$ux-black;
+        text-decoration: underline;
+      }
   }

@@ -1,18 +1,19 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import {NavLink} from 'react-router-dom';
 
+import Login from './Login';
 import './Nav.scss';
 
 const Nav = props => {
     return ( 
         <nav className="nav">
             <div className="nav__left">
-            <Link to="/login">Login</Link>
+            /<NavLink activeClassName="link--active" to="/login">Login</NavLink>/
             </div>
 
             <div className="nav__right">
-            <Link to="/">Home</Link>
-            <Link to="/signup">Sign Up</Link>
+            /<NavLink activeClassName="link--active" exact to="/">Home</NavLink>/
+            <NavLink activeClassName="link--active" to="/signup">Sign Up</NavLink>/
             </div>
           </nav>
      );

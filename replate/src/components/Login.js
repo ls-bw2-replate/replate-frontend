@@ -30,7 +30,7 @@ export default class Login extends Component {
             <div className="Login">
             
             <form onSubmit={this.handleSubmit}>
-                <h5>Please and Thank You!</h5>
+                <h5>Login</h5>
                 <input name="email"
                     onChange={this.handleChange}
                     placeholder="email"
@@ -45,8 +45,7 @@ export default class Login extends Component {
                     value={this.state.password}
                     required />
 
-                <input type="submit" value="Submit" />
-                <input type="reset"/>
+                <input type="submit" value="Go" />
 
                 </form>
                 </div>

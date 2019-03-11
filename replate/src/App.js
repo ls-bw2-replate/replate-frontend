@@ -15,9 +15,9 @@ class App extends Component {
         </header>
 
         <main>
-          <h1>RePlate</h1>
-          {/* <img src={'./replate_logo.jpg'} alt=""/> */}
+          {/* <h1>RePlate</h1> */}
           <Route path="/login" component={Login}/>
+          <img id="big-logo" src={require('./replate_badge.png')} alt="RePlate - Feed the Hungry. Reduce Waste."/>
           <Route path="/signup" component={SignupVolunteer}/>
         </main>
       </div>
