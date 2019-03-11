@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import {Route} from 'react-router-dom';
 
+import Login from './components/Login';
+import Nav from './components/Nav';
 import SignupVolunteer from './components/SignupVolunteer';
 import './App.scss';
 
@@ -7,20 +10,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <nav>
-            <div className="nav__left">
-            <a href="#">Login</a>
-            </div>
-            <div className="nav__right">
-            <a href="#">Home</a>
-            <a href="#">Sign Up</a>
-            </div>
-          </nav>
+        <header>
+        <Nav />
         </header>
 
         <main>
-          <SignupVolunteer />
+          <h1>RePlate</h1>
+          {/* <img src={'./replate_logo.jpg'} alt=""/> */}
+          <Route path="/login" component={Login}/>
+          <Route path="/signup" component={SignupVolunteer}/>
         </main>
       </div>
     );

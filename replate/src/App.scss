@@ -7,30 +7,42 @@
   justify-content: center;
 }
 
-
 .App {
   @include center;
-
-  border:1px solid red;
+  color:$text-color;
   flex-direction: column;
+  line-height:1.5;
   width:100%;
+
+  a {
+    color:$link-color;
+    margin:0 4px;
+    text-decoration: none;
+
+    &:hover {
+      color:$link--active;
+      text-decoration: underline;
+    }
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
 
   header {
     @include center;
-    
-    background:green;
-    border:1px solid cyan;
+    border-bottom:4px solid $ux-secondary;
+    margin-bottom:12px;
     width:100%;
+  }
 
-    nav {
-      @include center;
+  main {
+    @include center;
+    width:90%;
 
+    img {
       border:1px solid magenta;
-
-      a {
-        line-height:1.5;
-        margin:0 4px;
-      }
+      padding:8px;
     }
   }
 }
