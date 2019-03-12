@@ -1,9 +1,28 @@
 // UX PALETTE
-$ux-black:#272727;
-$ux-grey: #676767;
-$ux-primary:#28810B;
-$ux-secondary:#549D3F;
-$ux-white: white;
+/* Coolors Exported Palette - coolors.co/28810b-549d3f-ffffff-676767-272727 */
+
+/* HSL */
+$ux-primary: hsla(105%, 84%, 27%, 1);
+$ux-secondary: hsla(107%, 43%, 43%, 1);
+$ux-white: hsla(0%, 0%, 100%, 1);
+$ux-grey: hsla(0%, 0%, 40%, 1);
+$ux-black: hsla(0%, 0%, 15%, 1);
+
+/* RGB */
+$ux-blue: rgba(209,243,255,1);
+$ux-hilite: regba(232,240,254, 1);
+// $ux-primary: rgba(40, 129, 11, 1);
+// $ux-secondary: rgba(84, 157, 63, 1);
+// $ux-white: rgba(255, 255, 255, 1);
+// $ux-grey:  rgba(103, 103, 103, 1);
+// $ux-black: rgba(39, 39, 39, 1);
+
+/* HEX */
+// $ux-black:#272727;
+// $ux-grey: #676767;
+// $ux-primary:#28810B;
+// $ux-secondary:#549D3F;
+// $ux-white: #ffffff;
 
 // GENERAL PAGE STYLES
 $background-color: $ux-white;
@@ -15,4 +34,4 @@ $link-color: $ux-grey;
 $link--active: $ux-black;
 
 // FORMS
-$input-color:$ux-white;
+$input-color:$ux-blue;

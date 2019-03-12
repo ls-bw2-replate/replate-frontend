@@ -15,17 +15,17 @@ class App extends Component {
         </header>
 
         <main>
-          {/* <Route exact path="/" render={props => (
-            <img id="big-logo" src={require('./replate_badge.png')} alt="RePlate - Feed the Hungry. Reduce Waste."/>
-            )}/> */}
-
           <Route path="/login" component={Login}/>
-          <img id="big-logo" src={require('./replate_badge.png')} alt="RePlate - Feed the Hungry. Reduce Waste."/>
+
+          <img id="big-logo" 
+            src={require('./replate_badge.png')} 
+            alt="RePlate - Feed the Hungry. Reduce Waste."
+            />
+          
           <Route path="/signup" component={Signup}/>
         </main>
       </div>
     );
   }
 }
-
 export default App;

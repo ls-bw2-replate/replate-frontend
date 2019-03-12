@@ -3,10 +3,13 @@
 .nav {
     @include center;
     align-items: flex-start;
-    // border:1px solid magenta;
     justify-content: space-between;
     max-width: 900px;
     width:100%;
+
+    @media (max-width:600px) {
+      flex-direction: column-reverse;
+    }
 
     .link--active {
         color:$ux-black;
@@ -15,7 +18,10 @@
 
     .nav__left {
         @include center;
-        // border:1px solid red;
+
+        @media (max-width:600px) {
+          margin-top:8px;
+        }
 
         #nav__logo {
             width:80px;

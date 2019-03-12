@@ -10,6 +10,7 @@
 
         input[type=text], input[type=password] {
             @include form__input;
+            width:100%;
         }
 
         input[type=submit], input[type=reset] {

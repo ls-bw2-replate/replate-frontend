@@ -5,9 +5,10 @@
   }
 
 @mixin form__button() {
-    background:$text-color;
+    background:$ux-secondary;
     border: 2px solid $ux-secondary;
     border-bottom:2px solid $ux-black;
+    border-right:2px solid $ux-black;
     color: $ux-black;
     font-size:1rem;
     font-weight:900;
@@ -17,18 +18,24 @@
     width:150px;
 
     &:hover {
-        background:$ux-primary;
+        background:$ux-secondary;
+        border: 2px solid $ux-secondary;
         color:$background-color;
         cursor:pointer;
     }
 }
 
 @mixin form__input() {
-    background:$input-color;
-            border:2px dotted $text-color;
-            border-top:0;
-            color:$background-color;
-            margin:4px;
-            width:150px;
-            padding:8px;
+    background:$ux-white;
+    border:2px dotted $text-color;
+    border-top:0;
+    color:$ux-black;
+    font-size:1rem;
+    margin:4px;
+    width:150px;
+    padding:8px;
+
+    &:hover {
+        background:$ux-blue;
+    }
 }

@@ -6,18 +6,9 @@ import './SignupNav.scss'
 const SignupNav = props => {
     return ( 
         <div className="SignupNav">
-            <p>
-            I am an<Link to="/signup/volunteer">Individual Volunteer.</Link>
-            </p>
-
-            <p>I am a<Link to="/signup/business">Business</Link> 
-                that wants to donate.
-            </p>
-
-            <p>
-                I am a<Link to="/signup/foodbank">Food Bank</Link> 
-                that wants to receive donations.
-            </p>
+        <h4>I am an<Link to="/signup/volunteer">Individual Volunteer.</Link></h4>
+        <h4>I am a<Link to="/signup/business">Business</Link>that wants to donate.</h4>
+        <h4>I am a<Link to="/signup/foodbank">Food Bank</Link>that wants to receive donations.</h4>
         </div>
      );
 }

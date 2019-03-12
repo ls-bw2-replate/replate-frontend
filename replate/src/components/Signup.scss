@@ -5,30 +5,4 @@
     flex-direction: column;
     margin: 0 16px;
     width:100%;
-
-    form {
-        @include center;
-        background:$background-color;
-        flex-direction: column;
-
-        input[type=text], input[type=password] {
-            @include form__input;
-        }
-        
-        input[type=submit], input[type=reset] {
-            @include form__button;
-        }
-
-        ul {
-            @include center;
-            align-items:flex-start;
-            flex-direction: column;
-        
-            li {
-                @include center;
-                align-items: flex-start;
-                flex-direction: column;
-            }
-        }
-    }
 }
