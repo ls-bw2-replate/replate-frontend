@@ -1,13 +1,32 @@
 import React from 'react';
 
-import './SignupVolunteer.scss';
+import './SignupBusiness.scss';
 
-const SignupVolunteer = props => {
+const SignupBusiness = props => {
     return (
-        <ul className="SignupVolunteer">
-            <h5>Individual Volunteer,</h5>
-            <h6>please tell us about <strong>yourself!</strong></h6>
+        <ul className="SignupBusiness">
+            <h5>Please tell us about your <strong>Business</strong>,</h5>
+            
+            <li>
+                <p>What is the name of your business?</p>
+                <input name="businessName"
+                    onChange={props.handleChange}
+                    placeholder="business name"
+                    type="text"
+                    value={props.businessName}
+                    required />
+            </li>
 
+            <li>
+                <p>What is the address of your business?</p>
+                <input name="businessAddr"
+                    onChange={props.handleChange}
+                    placeholder="business address"
+                    type="text"
+                    value={props.businessAddr}
+                    required />
+            </li>
+            <h6>and some details about <strong>yourself</strong>,</h6>
             <li>
                 <p>What is your name?</p>
                 <input name="name"
@@ -37,8 +56,8 @@ const SignupVolunteer = props => {
             </li>
 
             <input type="submit" value="Sign Up" />
-
+            
         </ul>
      );
 }
-export default SignupVolunteer;
+export default SignupBusiness;

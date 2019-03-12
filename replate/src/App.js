@@ -3,7 +3,7 @@ import {Route} from 'react-router-dom';
 
 import Login from './components/Login';
 import Nav from './components/Nav';
-import SignupVolunteer from './components/SignupVolunteer';
+import Signup from './components/Signup';
 import './App.scss';
 
 class App extends Component {
@@ -15,10 +15,13 @@ class App extends Component {
         </header>
 
         <main>
-          {/* <h1>RePlate</h1> */}
+          {/* <Route exact path="/" render={props => (
+            <img id="big-logo" src={require('./replate_badge.png')} alt="RePlate - Feed the Hungry. Reduce Waste."/>
+            )}/> */}
+
           <Route path="/login" component={Login}/>
           <img id="big-logo" src={require('./replate_badge.png')} alt="RePlate - Feed the Hungry. Reduce Waste."/>
-          <Route path="/signup" component={SignupVolunteer}/>
+          <Route path="/signup" component={Signup}/>
         </main>
       </div>
     );
