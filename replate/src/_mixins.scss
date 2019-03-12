@@ -1,0 +1,34 @@
+@mixin center() {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+@mixin form__button() {
+    background:$text-color;
+    border: 2px solid $ux-secondary;
+    border-bottom:2px solid $ux-black;
+    color: $ux-black;
+    font-size:1rem;
+    font-weight:900;
+    margin:4px;
+    padding:8px;
+    transition-duration: 1s;
+    width:150px;
+
+    &:hover {
+        background:$ux-primary;
+        color:$background-color;
+        cursor:pointer;
+    }
+}
+
+@mixin form__input() {
+    background:$input-color;
+            border:2px dotted $text-color;
+            border-top:0;
+            color:$background-color;
+            margin:4px;
+            width:150px;
+            padding:8px;
+}

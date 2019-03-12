@@ -1,0 +1,19 @@
+@import '../App';
+
+.Login {
+    padding:16px;
+
+    form {
+        @include center;
+        background:$background-color;
+        flex-direction: column;
+
+        input[type=text], input[type=password] {
+            @include form__input;
+        }
+
+        input[type=submit], input[type=reset] {
+            @include form__button;
+        }
+    }
+}

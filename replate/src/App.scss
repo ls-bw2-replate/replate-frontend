@@ -1,36 +1,73 @@
 @import 'reset';
+@import '_mixins';
 @import '_palette';
 
-@mixin center() {
-  align-items: center;
-  display: flex;
-  justify-content: center;
+* {
+  box-sizing: border-box;
+  transition-duration: 0.25s;
 }
-
 
 .App {
   @include center;
-
-  border:1px solid red;
+  color:$text-color;
+  font-family: 'Lato', sans-serif;
   flex-direction: column;
-  width:100%;
+  line-height:1.5;
+  margin:0 auto;
+  max-width:100%;
+
+  a {
+    color:$link-color;
+    margin:0 4px;
+    text-decoration: none;
+
+    &:hover {
+      color:$link--active;
+      text-decoration: underline;
+    }
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h5 {
+    font-size:1.5rem;
+  }
+
+  h6 {
+    font-size: 0.75rem;
+    margin-top:16px;
+  }
 
   header {
     @include center;
-    
-    background:green;
-    border:1px solid cyan;
-    width:100%;
+    border-bottom:2px solid $ux-secondary;
+    margin-bottom:12px;
+    padding:12px;
+    max-width:900px;
+    width:90%;
+  }
 
-    nav {
-      @include center;
+  main {
+    @include center;
+    align-items: baseline;
+    justify-content: center;
+    max-width:900px;
+    width:90%;
 
-      border:1px solid magenta;
-
-      a {
-        line-height:1.5;
-        margin:0 4px;
-      }
+    #big-logo {
+      align-self: flex-start;
+      max-width:400px;
+      width:50%;
     }
+  }
+
+  small {
+    font-size:0.65rem;
+  }
+
+  strong {
+    font-weight:900;
   }
 }
