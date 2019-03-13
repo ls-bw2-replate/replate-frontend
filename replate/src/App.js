@@ -35,7 +35,7 @@ class App extends Component {
       {
         id:2,
         businessName: 'Trader Joes',
-        businessAddr: '6120 Jefferson Ave',
+        businessAddr: '61120 Jefferson Ave',
         picked:false,
       },
     ];
