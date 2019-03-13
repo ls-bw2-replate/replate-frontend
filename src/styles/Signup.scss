@@ -1,0 +1,8 @@
+@import './App.scss';
+
+.Signup {
+	@include center;
+	flex-direction: column;
+	margin: 0 16px;
+	width: 100%;
+}

@@ -1,0 +1,32 @@
+@import './App.scss';
+
+ul.SignupForm {
+	form {
+		@include center;
+		align-items: baseline;
+		background: $background-color;
+		flex-direction: column;
+
+		input[type='text'],
+		input[type='password'] {
+			@include form__input;
+		}
+
+		input[type='submit'],
+		input[type='reset'] {
+			@include form__button;
+		}
+
+		ul {
+			@include center;
+			align-items: flex-start;
+			flex-direction: column;
+
+			li {
+				@include center;
+				align-items: flex-start;
+				flex-direction: column;
+			}
+		}
+	}
+}
