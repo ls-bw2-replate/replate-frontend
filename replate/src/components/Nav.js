@@ -7,7 +7,10 @@ const Nav = props => {
     return ( 
         <nav className="nav">
             <div className="nav__left">
-            <img id="nav__logo" src={require('../replate_text.png')}alt=""/>
+            <img id="nav__logo"
+                src={require('../replate_text.png')} 
+                alt="RePlate" 
+                onClick={props.login}/>
             >><NavLink activeClassName="link--active" to="/login">Login</NavLink>
             </div>
 

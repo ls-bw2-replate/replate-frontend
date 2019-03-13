@@ -8,6 +8,7 @@ class SignupForm extends Component {
     constructor(props) {
         super(props);
         this.state = {  
+            address: 'address',
             businessAddr:'',
             businessName:'',
             email: '',
@@ -33,6 +34,7 @@ class SignupForm extends Component {
 
         if (usertype === 'volunteer') { 
             newUser = {
+            address: 'address',
             email: this.state.email,
             'first_name': this.state['first_name'],
             'last_name': this.state['last_name'],
@@ -45,10 +47,12 @@ class SignupForm extends Component {
 
         console.log(newUser);
 
-        axios.post('https://replate-backend.herokuapp.com/', newUser)
+        axios.post('https://replate-backend.herokuapp.com/api/auth/register', newUser)
             .then(res => console.log(res))
             .catch(err => console.log(err));
     }
+
+
 
     render() { 
         const { usertype } = this.props.match.params;

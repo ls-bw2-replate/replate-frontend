@@ -1,0 +1,8 @@
+@import '../App';
+
+.HomeVolunteer {
+    @include center;
+    // border:1px solid red;
+    flex-direction: column;
+
+}
