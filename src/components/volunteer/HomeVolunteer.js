@@ -1,9 +1,11 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import '../../styles/HomeVolunteer.scss';
 
 import Donation from '../donations/Donation';
-// import '../../styles/HomeVolunteer.scss';
 import MyDonations from '../donations/MyDonations';
+import FoodBankList from '../foodbank/FoodBankList';
+
 
 const HomeView = props => {
 	return (
@@ -20,6 +22,8 @@ const HomeView = props => {
 						key={item.id}
 						businessName={item.businessName}
 						businessAddr={item.businessAddr}
+						pickup={item.pickup}
+						delivered={item.delivered}
 					/>
 				);
 			})}
@@ -30,6 +34,15 @@ const HomeView = props => {
 const HomeVolunteer = props => {
 	return (
 		<div className="HomeVolunteer">
+		{/* HOME PAGE */}
+			<Route
+				exact path="/loggedin"
+				render={ownProps => (
+					<HomeView firstName={props.firstName} donations={props.donations} />
+				)}
+			/>
+
+			{/* MY DONATIONS */}
 			<Route
 				path="/loggedin/mydonations"
 				render={ownProps => (
@@ -40,10 +53,14 @@ const HomeVolunteer = props => {
 				)}
 			/>
 
+			{/* FOOD BANK LIST */}
 			<Route
-				path="/loggedin"
+				path="/loggedin/foodbanks"
 				render={ownProps => (
-					<HomeView firstName={props.firstName} donations={props.donations} />
+					<FoodBankList
+					firstName={props.firstName}
+					foodBankList={props.foodBankList}
+					/>
 				)}
 			/>
 		</div>
