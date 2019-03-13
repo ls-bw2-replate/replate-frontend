@@ -7,7 +7,7 @@ const MyDonations = props => {
 	console.log('hello');
 	return (
 		<div className="MyDonations">
-			<h2>Hello, {props.firstName}!</h2>
+			<h2>MyDonations</h2>
 			<p>
 				You have selected {props.myDonations.length} donations for pick-up
 				today.
@@ -19,6 +19,8 @@ const MyDonations = props => {
 						key={item.id}
 						businessName={item.businessName}
 						businessAddr={item.businessAddr}
+						pickup={item.pickup}
+						delivered={item.delivered}
 					/>
 				);
 			})}

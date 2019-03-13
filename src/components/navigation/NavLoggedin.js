@@ -29,7 +29,7 @@ const NavLoggedin = props => {
 					Home
 				</NavLink>
 				/
-				<NavLink activeClassName="link--active" to="/foodbanks">
+				<NavLink activeClassName="link--active" to="/loggedin/foodbanks">
 					Food Banks
 				</NavLink>
 				/

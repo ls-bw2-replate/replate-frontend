@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import { Route } from 'react-router-dom';
 import axios from 'axios';
 
@@ -10,62 +10,47 @@ import NavLoggedin from './components/navigation/NavLoggedin';
 import Signup from './components/signup/Signup';
 import './styles/App.scss';
 
+let fakeFoodBanks = [
+	{
+		id: 123,
+		businessName: 'fakeFoodBank',
+		businessAddr: '123 Fake St'
+	}
+];
+
+let fakeDonations = [
+	{
+		id:232,
+		businessName: 'fakeDonation',
+		businessAddr: '2342 Lala Lane',
+		pickup:'',
+		delivered:'',
+	}
+];
+
+let fakeMyDonations = [
+	{
+		id:333,
+		businessName: 'Two Tacos',
+		businessAddr: '301 Burrito Bunker',
+		pickup:'SteveDaveID',
+		delivered:'',
+	}
+];
+
 class App extends Component {
 	state = {
-		donations: [],
-		foodbanks: [],
+		donations: [...fakeDonations],
+		foodbanks: [...fakeFoodBanks],
 		first_name: 'SteveDave',
 		loggedin: '',
-		myDonations: [],
+		myDonations: [...fakeMyDonations],
 	};
 
 	componentDidMount() {
-		this.getDonations();
-		// let fakeDonations = [
-		// 	{
-		// 		id: 0,
-		// 		businessName: 'Dinosaur BBQ',
-		// 		businessAddr: '333 Elm St',
-		// 		picked: false,
-		// 	},
-		// 	{
-		// 		id: 1,
-		// 		businessName: 'Morgan & Morgan',
-		// 		businessAddr: '987 Court St',
-		// 		picked: false,
-		// 	},
-		// 	{
-		// 		id: 2,
-		// 		businessName: 'Trader Joes',
-		// 		businessAddr: '61120 Jefferson Ave',
-		// 		picked: false,
-		// 	},
-		// ];
-		// let fakeDonationsToo = [
-		// 	{
-		// 		id: 3,
-		// 		businessName: 'the Little Pickle',
-		// 		businessAddr: '3121 Kaiser Blvd',
-		// 		picked: false,
-		// 	},
-		// 	{
-		// 		id: 4,
-		// 		businessName: 'Wegmans',
-		// 		businessAddr: '1000 James Way',
-		// 		picked: false,
-		// 	},
-		// 	{
-		// 		id: 5,
-		// 		businessName: 'Lil Rickys',
-		// 		businessAddr: '6120 Jefferson Ave',
-		// 		picked: false,
-		// 	},
-		// ];
-		// this.setState({
-		// 	donations: [...fakeDonations],
-		// 	myDonations: [...fakeDonationsToo],
-		// });
+		// this.getDonations();
 	}
+
 	getDonations = () => {
 		axios
 			.get('http://localhost:5000/api/food')
@@ -86,7 +71,6 @@ class App extends Component {
 	};
 
 	render() {
-		console.log(this.state);
 		return (
 			<div className="App">
 				<header>
@@ -106,6 +90,7 @@ class App extends Component {
 							<HomeVolunteer
 								donations={this.state.donations}
 								firstName={this.state['first_name']}
+								foodBankList={this.state.foodbanks}
 								myDonations={this.state.myDonations}
 							/>
 						)}
