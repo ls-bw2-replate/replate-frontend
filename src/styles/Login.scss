@@ -1,0 +1,22 @@
+@import '../styles/App.scss';
+
+.Login {
+	padding: 16px;
+
+	form {
+		@include center;
+		background: $background-color;
+		flex-direction: column;
+
+		input[type='text'],
+		input[type='password'] {
+			@include form__input;
+			width: 100%;
+		}
+
+		input[type='submit'],
+		input[type='reset'] {
+			@include form__button;
+		}
+	}
+}
