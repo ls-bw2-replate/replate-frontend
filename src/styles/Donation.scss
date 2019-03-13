@@ -1,0 +1,26 @@
+@import '../styles//App.scss';
+
+.Donation {
+	@include center;
+	background: $ux-secondary;
+	border: 2px solid $ux-secondary;
+	border-bottom: 2px solid $ux-black;
+	border-right: 2px solid $ux-black;
+	color: $ux-black;
+	margin: 8px;
+	padding: 4px;
+
+	&:hover {
+		background: $ux-blue;
+		cursor: pointer;
+	}
+
+	i {
+		color: $ux-black;
+		margin: 4px;
+	}
+
+	p {
+		margin: 0 4px;
+	}
+}
