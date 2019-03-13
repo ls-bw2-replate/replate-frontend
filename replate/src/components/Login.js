@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-
+import axios from 'axios';
 import './Login.scss';
 
 export default class Login extends Component {
@@ -25,11 +24,26 @@ export default class Login extends Component {
         console.log('newLogin',newLogin);
     }
 
+    handleLogin = e => {
+        e.preventDefault();
+
+        let newLogin = {
+            // email:'rj@rj.com',
+            password:'123456',
+            'first_name':'lil ricky',
+            usertype:'volunteer',
+        };
+
+        axios.post('https://replate-backend.herokuapp.com/api/auth/login', newLogin)
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+    }
+
     render() {
         return (
             <div className="Login">
             
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleLogin}>
                 <h5>Login</h5>
                 <input name="email"
                     onChange={this.handleChange}
@@ -49,6 +63,6 @@ export default class Login extends Component {
 
                 </form>
                 </div>
-                );
+            );
         }
 }

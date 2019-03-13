@@ -1,8 +1,8 @@
 @import '../App';
 
-.Signup {
+.HomeVolunteer {
     @include center;
+    // border:1px solid red;
     flex-direction: column;
-    margin: 0 16px;
-    width:100%;
+
 }
