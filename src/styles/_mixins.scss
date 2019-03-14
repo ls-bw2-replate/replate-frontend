@@ -68,3 +68,33 @@
 		margin: 0 4px;
 	}
 }
+
+@mixin donation-new() {
+    @include center;
+	color:$ux-grey;
+
+	&:hover {
+		color:$ux-black;
+	}
+
+	i {
+		background: $ux-secondary;
+		border: 2px solid $ux-secondary;
+		border-bottom: 2px solid $ux-black;
+		border-right: 2px solid $ux-black;
+		color:$ux-black;
+		margin:4px;
+		padding:4px;
+
+		&:hover {
+			background: $ux-blue;
+			cursor: pointer;
+		}
+	}
+
+	p {
+		font-size:1rem;
+    	font-weight:900;
+		margin: 0 4px;
+	}
+}

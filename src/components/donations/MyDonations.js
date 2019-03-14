@@ -4,7 +4,6 @@ import Donation from './Donation';
 import '../../styles/MyDonations.scss';
 
 const MyDonations = props => {
-	console.log('hello');
 	return (
 		<div className="MyDonations">
 			<h2>MyDonations</h2>
@@ -16,11 +15,14 @@ const MyDonations = props => {
 			{props.myDonations.map(item => {
 				return (
 					<Donation
+						id={item.id}
 						key={item.id}
 						businessName={item.businessName}
 						businessAddr={item.businessAddr}
-						pickup={item.pickup}
 						delivered={item.delivered}
+						pickup={item.pickup}
+						newPickup={props.newPickup}
+						removePickup={props.removePickup}
 					/>
 				);
 			})}

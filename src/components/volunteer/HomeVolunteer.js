@@ -18,12 +18,14 @@ const HomeView = props => {
 
 			{props.donations.map(item => {
 				return (
-					<Donation
+					<Donation 
 						key={item.id}
+						id={item.id}
 						businessName={item.businessName}
 						businessAddr={item.businessAddr}
-						pickup={item.pickup}
 						delivered={item.delivered}
+						newPickup={props.newPickup}
+						pickup={item.pickup}
 					/>
 				);
 			})}
@@ -38,7 +40,12 @@ const HomeVolunteer = props => {
 			<Route
 				exact path="/loggedin"
 				render={ownProps => (
-					<HomeView firstName={props.firstName} donations={props.donations} />
+					<HomeView 
+						firstName={props.firstName}
+						donations={props.donations}
+						newPickup={props.newPickup}
+						removePickup={props.removePickup}
+					/>
 				)}
 			/>
 
@@ -49,6 +56,8 @@ const HomeVolunteer = props => {
 					<MyDonations
 						firstName={props.firstName}
 						myDonations={props.myDonations}
+						newPickup={props.newPickup}
+						removePickup={props.removePickup}
 					/>
 				)}
 			/>

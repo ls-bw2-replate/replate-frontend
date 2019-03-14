@@ -1,5 +1,13 @@
 @import './App.scss';
 
 .Donation {
-	@include donation-button;
+	@include donation-new;
+
+	.remove {
+		background:red;
+		&:hover {
+			background:red;
+			color:$ux-grey;
+		}
+	}
 }

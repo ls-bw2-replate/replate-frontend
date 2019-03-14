@@ -4,7 +4,6 @@ import FoodBank from './FoodBank';
 import '../../styles/FoodBankList.scss';
 
 const FoodBankList = props => {
-	console.log('hello');
 	return (
 		<div className="FoodBankList">
 			<h2>Hello, {props.firstName}!</h2>
