@@ -1,5 +1,36 @@
 @import './App.scss';
 
 .Donation {
-	@include donation-button;
+	@include donation-new;
+	justify-content: left;
+	width:400px;
+
+	button {
+		@include button-mini;
+	}
+
+	i {
+		margin:4px 0;
+	}
+
+	p {
+		background:$ux-secondary;
+		border:2px solid $ux-secondary;
+		border-bottom:2px solid $ux-black;
+		border-right:2px solid $ux-black;
+		color:white;
+		margin:0;
+		padding: 4px;
+	}
+
+	.remove {
+		background:red;
+		border-top:2px solid red;
+		border-left:2px solid red;
+
+		&:hover {
+			background:red;
+			color:$ux-grey;
+		}
+	}
 }
