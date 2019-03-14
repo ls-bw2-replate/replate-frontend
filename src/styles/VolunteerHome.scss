@@ -14,8 +14,7 @@
 	.left {
 		@include center;
 		display:flex;
-		// align-items: baseline;
-		align-self: baseline;
+		// align-self: baseline;
 		// border:1px solid cyan;
 		flex-direction: column;
 		// width:50%;
@@ -23,7 +22,6 @@
 
 	.right {
 		@include center;
-		// align-items: baseline;
 		align-self: baseline;
 		// border:1px solid red;
 		flex-direction: column;
