@@ -1,15 +1,8 @@
 import React, {Component} from 'react';
-// import { Route } from 'react-router-dom';
 import axios from 'axios';
 
-// import HomeVolunteer from './components/volunteer/HomeVolunteer';
-// import Login from './components/login/Login';
-// import Nav from './components/navigation/Nav';
-// import NavLoggedin from './components/navigation/NavLoggedin';
-
-// import Signup from './components/signup/Signup';
-
 import ViewDefault from './components/views/ViewDefault';
+import ViewVolunteer from './components/views/ViewVolunteer';
 import './styles/App.scss';
 
 let fakeFoodBanks = [
@@ -71,24 +64,25 @@ class App extends Component {
 		this.setState({
 			loggedin: 'volunteer',
 		});
+		window.history.pushState(null,null,'/volunteer');
 	};
 
 	logout = e => {
 		this.setState({
 			loggedin: '',
 		});
+		window.history.pushState(null,null,'/');
 	};
 
 	newPickup = e => {
 		let postDonations = [...this.state.donations];
 		let myPostDonations = [...this.state.myDonations];
-		let thisItem = {};
 		let thisId = Number(e.target.id);
 
 		postDonations.forEach((item,index) => {
 			if (item.id === thisId) {
 				item.pickup = this.state['first_name'];
-				thisItem = {...item};
+				let thisItem = {...item};
 				postDonations.splice(index,1);
 				myPostDonations = [...myPostDonations, thisItem];
 				this.setState(prevState => ({
@@ -102,8 +96,6 @@ class App extends Component {
 		myPostDonations.forEach((item,index) => {
 			if (item.id === thisId) {
 				item.pickup = this.state['first_name'];
-				thisItem = {...item};
-				myPostDonations.splice(index,1,thisItem);
 				this.setState(prevState => ({
 					...prevState,
 					myDonations: [...myPostDonations],
@@ -113,15 +105,13 @@ class App extends Component {
 	};
 
 	removePickup = e => {
-		let myPostDonations = [...this.state.myDonations];
-		let thisItem = {};
 		let thisId = Number(e.target.id);
-
-		myPostDonations.forEach((item,index) => {
+		let myPostDonations = [...this.state.myDonations];
+ 		myPostDonations.forEach((item,index) => {
 			if (item.id === thisId) {
 				if (item.pickup === 'remove') {
 					item.pickup = '';
-					thisItem = {...item};
+					let thisItem = {...item};
 					myPostDonations.splice(index,1);
 					this.setState({
 						donations: [...this.state.donations, thisItem],
@@ -130,8 +120,7 @@ class App extends Component {
 				}
 				else {
 					item.pickup = 'remove';
-					thisItem = {...item};
-					myPostDonations.splice(index,1, thisItem);
+					console.log(myPostDonations);
 					this.setState({
 						myDonations: [...myPostDonations],
 					});
@@ -143,6 +132,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className="App">
+			{/* DEFAULT VIEW >> LOGIN || SIGNUP */}
 				{!this.state.loggedin && ( 
 					<ViewDefault 
 						login={this.fakeLogin}
@@ -154,55 +144,22 @@ class App extends Component {
 						removePickup={this.removePickup}
 					/>
 				 )}
+
+
+			{/* VOLUNTEER USER*/}
+				 {this.state.loggedin === 'volunteer' && (
+					 <ViewVolunteer
+						logout={this.logout}
+						donations={this.state.donations}
+						firstName={this.state['first_name']}
+						foodBankList={this.state.foodbanks}
+						myDonations={this.state.myDonations}
+						newPickup={this.newPickup}
+						removePickup={this.removePickup}
+					 />
+				 )}
 			</div>
 		);
-
-		
-
-
-		// OLD VIEW
-		// return (
-		// 	<div className="App">
-		// 		<header>
-		// 			{this.state.loggedin ? (
-		// 				<NavLoggedin logout={this.logout} />
-		// 			) : (
-		// 				<Nav login={this.fakeLogin} />
-		// 			)}
-		// 		</header>
-
-		// 		<main>
-		// 			<Route path="/login" component={Login} />
-
-		// 			<Route
-		// 				path="/loggedin"
-		// 				render={props => (
-		// 					<HomeVolunteer
-		// 						donations={this.state.donations}
-		// 						firstName={this.state['first_name']}
-		// 						foodBankList={this.state.foodbanks}
-		// 						myDonations={this.state.myDonations}
-		// 						newPickup={this.newPickup}
-		// 						removePickup={this.removePickup}
-		// 					/>
-		// 				)}
-		// 			/>
-
-		// 			{!this.state.loggedin && (
-		// 				<img
-		// 					id="big-logo"
-		// 					src={require('./assets/img/replate_badge.png')}
-		// 					alt="RePlate - Feed the Hungry. Reduce Waste."
-		// 				/>
-		// 			)}
-
-		// 			<Route path="/signup" component={Signup} />
-		// 		</main>
-		// 	</div>
-		// );
-
-
-
 	}
 }
 export default App;

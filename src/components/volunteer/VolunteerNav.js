@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 import '../../styles/Nav.scss';
 
-const NavLoggedin = props => {
+const VolunteerNav = props => {
 	return (
 		<nav className="nav">
 			<div className="nav__left">
@@ -17,19 +17,19 @@ const NavLoggedin = props => {
 				<NavLink activeClassName="link--active" to="/settings">
 					Settings
 				</NavLink>
-				/<NavLink to="/">Logout</NavLink>
+				/ <a href="/" onClick={props.logout}>Logout</a>
 			</div>
 
 			<div className="nav__right">
-				<NavLink activeClassName="link--active" to="/loggedin/mydonations">
+				<NavLink activeClassName="link--active" to="/volunteer/mydonations">
 					MyDonations
 				</NavLink>{' '}
 				>>
-				<NavLink activeClassName="link--active" to="/loggedin">
+				<NavLink activeClassName="link--active" to="/volunteer">
 					Home
 				</NavLink>
 				/
-				<NavLink activeClassName="link--active" to="/loggedin/foodbanks">
+				<NavLink activeClassName="link--active" to="/volunteer/foodbanks">
 					Food Banks
 				</NavLink>
 				/
@@ -37,4 +37,4 @@ const NavLoggedin = props => {
 		</nav>
 	);
 };
-export default NavLoggedin;
+export default VolunteerNav;
