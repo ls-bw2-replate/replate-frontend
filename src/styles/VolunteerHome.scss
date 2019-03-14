@@ -1,0 +1,32 @@
+@import './App.scss';
+
+.VolunteerHome {
+	@include center;
+	// border:1px solid red;
+	justify-content: space-between;
+	width:100%;
+
+	@media (max-width:850px) {
+		// background:black;
+		flex-direction: column;
+	}
+
+	.left {
+		@include center;
+		display:flex;
+		// align-items: baseline;
+		align-self: baseline;
+		// border:1px solid cyan;
+		flex-direction: column;
+		// width:50%;
+	}
+
+	.right {
+		@include center;
+		// align-items: baseline;
+		align-self: baseline;
+		// border:1px solid red;
+		flex-direction: column;
+		// width:50%;
+	}
+}

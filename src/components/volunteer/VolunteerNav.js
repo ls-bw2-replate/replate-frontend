@@ -13,26 +13,18 @@ const VolunteerNav = props => {
 					alt="RePlate"
 					onClick={props.logout}
 				/>
-				>>{' '}
-				<NavLink activeClassName="link--active" to="/settings">
-					Settings
-				</NavLink>
-				/ <a href="/" onClick={props.logout}>Logout</a>
+				>>
+				<a href="/" onClick={props.logout}>Logout</a>
 			</div>
 
 			<div className="nav__right">
-				<NavLink activeClassName="link--active" to="/volunteer/mydonations">
+				<NavLink activeClassName="link--active" exact to="/volunteer">
 					MyDonations
-				</NavLink>{' '}
-				>>
-				<NavLink activeClassName="link--active" to="/volunteer">
-					Home
 				</NavLink>
-				/
+				>>
 				<NavLink activeClassName="link--active" to="/volunteer/foodbanks">
 					Food Banks
 				</NavLink>
-				/
 			</div>
 		</nav>
 	);

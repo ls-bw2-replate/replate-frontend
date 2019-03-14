@@ -1,3 +1,25 @@
+@mixin button() {
+    @include form__button;
+}
+
+@mixin button-mini() {
+	background:$ux-white;
+	border-bottom:1px solid $ux-black;
+	border-right:1px solid $ux-black;
+	font-size:0.75rem;
+	font-weight:900;
+	margin:0 4px;
+	padding:2px;
+	width:80px;
+
+	&:hover {
+		background:$ux-blue;
+		border-top:1px solid $ux-blue;
+		border-left:1px solid $ux-blue;
+		cursor:pointer;
+	}
+}
+
 @mixin center() {
     align-items: center;
     display: flex;
@@ -23,10 +45,6 @@
         color:$background-color;
         cursor:pointer;
     }
-}
-
-@mixin button() {
-    @include form__button;
 }
 
 @mixin form__input() {

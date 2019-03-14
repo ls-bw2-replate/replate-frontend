@@ -3,7 +3,6 @@ import {Route} from 'react-router-dom';
 
 import FoodBankList from '../foodbank/FoodBankList';
 import VolunteerNav from '../volunteer/VolunteerNav';
-import MyDonations from '../donations/MyDonations';
 import VolunteerHome from '../volunteer/VolunteerHome';
 
 const ViewVolunteer = props => {
@@ -14,25 +13,13 @@ const ViewVolunteer = props => {
         </header>
 
         <main>
-            {/* HOME */}
+            {/* HOME >> NEW DONATIONS && MY DONATIONS */}
             <Route
 				exact path="/volunteer"
 				render={ownProps => (
 					<VolunteerHome
 						firstName={props.firstName}
 						donations={props.donations}
-						newPickup={props.newPickup}
-						removePickup={props.removePickup}
-					/>
-				)}
-			/>
-
-            {/* MY DONATIONS */}
-			<Route
-				path="/volunteer/mydonations"
-				render={ownProps => (
-					<MyDonations
-						firstName={props.firstName}
 						myDonations={props.myDonations}
 						newPickup={props.newPickup}
 						removePickup={props.removePickup}
@@ -50,7 +37,6 @@ const ViewVolunteer = props => {
 					/>
 				)}
 			/>
-
         </main>
         </>
      );
