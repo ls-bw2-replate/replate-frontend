@@ -13,13 +13,13 @@ const ViewVolunteer = props => {
         </header>
 
         <main>
-            {/* HOME >> NEW DONATIONS && MY DONATIONS */}
+            {/* VOLUNTEER HOME >> NEW DONATIONS && MY DONATIONS */}
             <Route
 				exact path="/volunteer"
 				render={ownProps => (
 					<VolunteerHome
-						firstName={props.firstName}
 						donations={props.donations}
+						firstName={props.firstName}
 						myDonations={props.myDonations}
 						newPickup={props.newPickup}
 						removePickup={props.removePickup}
@@ -41,5 +41,4 @@ const ViewVolunteer = props => {
         </>
      );
 }
- 
 export default ViewVolunteer;

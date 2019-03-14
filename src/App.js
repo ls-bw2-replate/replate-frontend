@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+import ViewBusiness from './components/views/ViewBusiness';
 import ViewDefault from './components/views/ViewDefault';
 import ViewVolunteer from './components/views/ViewVolunteer';
 import './styles/App.scss';
@@ -42,6 +43,7 @@ let fakeMyDonations = [
 
 class App extends Component {
 	state = {
+		businessName: 'Publix',
 		donations: [...fakeDonations],
 		foodbanks: [...fakeFoodBanks],
 		first_name: 'SteveDave',
@@ -60,11 +62,12 @@ class App extends Component {
 			.catch(err => console.log(err));
 	};
 
+	// FAKE LOGIN HARD CODED for BUSINESS VIEW
 	fakeLogin = e => {
 		this.setState({
-			loggedin: 'volunteer',
+			loggedin: 'business',
 		});
-		window.history.pushState(null,null,'/volunteer');
+		window.history.pushState(null,null,'/business');
 	};
 
 	logout = e => {
@@ -149,8 +152,8 @@ class App extends Component {
 			{/* VOLUNTEER USER*/}
 				 {this.state.loggedin === 'volunteer' && (
 					 <ViewVolunteer
-						logout={this.logout}
 						donations={this.state.donations}
+						logout={this.logout}
 						firstName={this.state['first_name']}
 						foodBankList={this.state.foodbanks}
 						myDonations={this.state.myDonations}
@@ -158,6 +161,21 @@ class App extends Component {
 						removePickup={this.removePickup}
 					 />
 				 )}
+
+			{/* BUSINESS USER*/}
+			{this.state.loggedin === 'business' && (
+					 <ViewBusiness
+						businessName={this.state.businessName}	 
+						donations={this.state.donations}
+						firstName={this.state['first_name']}
+						foodBankList={this.state.foodbanks}
+						logout={this.logout}
+						myDonations={this.state.myDonations}
+						newPickup={this.newPickup}
+						removePickup={this.removePickup}
+					 />
+				 )}
+
 			</div>
 		);
 	}
