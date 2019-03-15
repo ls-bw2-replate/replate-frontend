@@ -17,7 +17,7 @@ const Donation = props => {
 					<button id={props.id} onClick={props.newPickup}>UNDO</button>
 					</>
 				) : ( 
-					<>{props.businessName} - {props.businessAddr}</>
+					<>{props.name}</>
 				)}
 			</p>
 		</div>

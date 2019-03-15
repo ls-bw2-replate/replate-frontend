@@ -13,17 +13,26 @@ const ViewDefault = props => {
     </header>
 
     <main>
-        <Route path="/login" component={Login} />
+        <Route path="/login" render={ownProps => (
+            <Login {...ownProps}
+                error={props.error}
+                errorDisplay={props.errorDisplay}
+                login={props.loginReal}
+                loggedin={props.loggedin}
+            />
+            )}
+        />
 
         <img id="big-logo"
             src={require('../../assets/img/replate_badge.png')}
             alt="RePlate - Feed the Hungry. Reduce Waste."
         />
 
-        <Route path="/signup" component={Signup} />
+        <Route path="/signup" render={ownProps => (
+            <Signup {...ownProps} login={props.loginReal} />
+        )} />
     </main>
     </>
      );
 }
- 
 export default ViewDefault;

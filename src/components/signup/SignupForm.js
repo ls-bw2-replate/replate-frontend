@@ -8,7 +8,7 @@ class SignupForm extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			address: 'address',
+			address: '',
 			businessAddr: '',
 			businessName: '',
 			email: '',
@@ -34,7 +34,7 @@ class SignupForm extends Component {
 
 		if (usertype === 'volunteer') {
 			newUser = {
-				address: 'address',
+				address: this.state.address,
 				email: this.state.email,
 				first_name: this.state['first_name'],
 				last_name: this.state['last_name'],
@@ -42,15 +42,21 @@ class SignupForm extends Component {
 				phone: this.state.phone,
 				usertype: usertype,
 			};
-		} else newUser = { ...this.state, usertype: usertype };
-
+		} else newUser = { 
+				businessAddr: this.state.businessAddr,
+				businessName: this.state.businessName,
+				email: this.state.email,
+				password: this.state.password,
+				phone: this.state.phone,
+				usertype: usertype,
+		};
 		console.log(newUser);
 
-		axios
-			.post('http://localhost:5000/api/auth/register', newUser)
+		axios.post('https://replate-backend.herokuapp.com/api/auth/register', newUser)
 			.then(res => {
+				console.log(res);
 				localStorage.setItem('token', res.data.token);
-				this.props.history.push('/loggedin');
+				this.props.login(usertype);
 			})
 			.catch(err => console.log(err));
 	};
@@ -118,6 +124,20 @@ class SignupForm extends Component {
 							required
 						/>
 					</li>
+
+					{usertype === 'volunteer' && (
+						<li>
+						<p>What is your physical address?</p>
+						<input
+							name="address"
+							onChange={this.handleChange}
+							placeholder="physical address"
+							type="text"
+							value={this.state.address}
+							required
+						/>
+					</li>
+					)}
 
 					<li>
 						<p>What is your mobile phone number?</p>

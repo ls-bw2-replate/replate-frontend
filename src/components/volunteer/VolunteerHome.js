@@ -1,4 +1,5 @@
 import React from 'react';
+
 import '../../styles/VolunteerHome.scss';
 
 import Donation from '../donations/Donation';
@@ -7,6 +8,10 @@ import Donation from '../donations/Donation';
 const VolunteerHome= props => {
 	return (
 		<div className="VolunteerHome">
+
+		<button onClick={props.kill}>KILL</button>
+		<button onClick={props.edit}>EDIT</button>
+		<button onClick={props.add}>ADD</button>
 
 			<div className="left">
 				<h2>Hello, {props.firstName}!</h2>
@@ -22,6 +27,7 @@ const VolunteerHome= props => {
 						businessName={item.businessName}
 						businessAddr={item.businessAddr}
 						delivered={item.delivered}
+						name={item.name}
 						newPickup={props.newPickup}
 						pickup={item.pickup}
 						/>
@@ -45,6 +51,7 @@ const VolunteerHome= props => {
 							businessAddr={item.businessAddr}
 							delivered={item.delivered}
 							pickup={item.pickup}
+							name={item.name}
 							newPickup={props.newPickup}
 							removePickup={props.removePickup}
 						/>

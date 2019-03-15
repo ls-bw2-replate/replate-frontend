@@ -6,8 +6,10 @@ export default class Login extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			error:'',
 			email: '',
 			password: '',
+			waiting:false,
 		};
 	}
 
@@ -18,34 +20,38 @@ export default class Login extends Component {
 		});
 	};
 
-	handleSubmit = e => {
-		e.preventDefault();
-		const newLogin = { ...this.state };
-		console.log('newLogin', newLogin);
-	};
-
 	handleLogin = e => {
 		e.preventDefault();
-
+		this.setState({error:''});
 		let newLogin = {
-			// email:'rj@rj.com',
-			password: '123456',
-			first_name: 'lil ricky',
-			usertype: 'volunteer',
+			email: this.state.email,
+			password: this.state.password,
 		};
-
-		axios
-			.post('http://localhost:5000/api/auth/register', newLogin)
+		this.setState({waiting:true});
+		axios.post('https://replate-backend.herokuapp.com/api/auth/login', newLogin)
 			.then(res => {
+				console.log(res.data);
 				localStorage.setItem('token', res.data.token);
-				this.props.history.push('/loggedin');
+				this.props.login(res.data.usertype);
 			})
-			.catch(err => console.log(err));
-	};
+			.catch(err => {
+				console.log(err);
+				this.setState({
+					error:err.message,
+					waiting:false,
+				});
+			});
+	}
 
 	render() {
 		return (
 			<div className="Login">
+				{/* LOADING SCREEN */}
+				{this.state.waiting && ( <h4>loading...</h4> )}
+
+				{/* ERROR DISPLAY */}
+				{this.state.error && ( <h4 className="error-msg">{this.state.error}</h4> )}
+
 				<form onSubmit={this.handleLogin}>
 					<h5>Login</h5>
 					<input

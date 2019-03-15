@@ -18,8 +18,11 @@ const ViewVolunteer = props => {
 				exact path="/volunteer"
 				render={ownProps => (
 					<VolunteerHome
+						add={props.add}
 						donations={props.donations}
+						edit={props.edit}
 						firstName={props.firstName}
+						kill={props.kill}
 						myDonations={props.myDonations}
 						newPickup={props.newPickup}
 						removePickup={props.removePickup}

@@ -19,7 +19,7 @@ const Signup = props => {
 
 			<Route
 				path="/signup/:usertype"
-				render={ownProps => <SignupForm {...ownProps} />}
+				render={ownProps => <SignupForm {...ownProps} login={props.login}/>}
 			/>
 		</div>
 	);

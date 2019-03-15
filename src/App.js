@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import axiosWithAuth from './components/axios/axiosWithAuth';
+
 
 import ViewBusiness from './components/views/ViewBusiness';
 import ViewDefault from './components/views/ViewDefault';
@@ -14,37 +16,18 @@ let fakeFoodBanks = [
 	}
 ];
 
-let fakeDonations = [
-	{
-		id:55555,
-		businessName: 'ANOTHER fakeDonation',
-		businessAddr: '2342 LELE Lane',
-		pickup:'',
-		delivered:'',
-	},
-	{
-		id:4343,
-		businessName: 'fakeDonation',
-		businessAddr: '2342 Lala Lane',
-		pickup:'',
-		delivered:'',
-	}
-];
-
 let fakeMyDonations = [
 	{
 		id:333,
-		businessName: 'Two Tacos',
-		businessAddr: '301 Burrito Bunker',
-		pickup:'SteveDaveID',
-		delivered:'',
+		name: 'Two Tacos',
 	}
 ];
 
 class App extends Component {
 	state = {
 		businessName: 'Publix',
-		donations: [...fakeDonations],
+		donations: [],
+		error:'',
 		foodbanks: [...fakeFoodBanks],
 		first_name: 'SteveDave',
 		loggedin: '',
@@ -52,30 +35,114 @@ class App extends Component {
 	};
 
 	componentDidMount() {
-		// this.getDonations();
+		// this.getFoodBanks();
+	}
+
+	catchErr = err => {
+		console.log(err);
+		this.setState({
+			error:err,
+		});
 	}
 
 	getDonations = () => {
-		axios
-			.get('http://localhost:5000/api/food')
-			.then(res => this.setState({ donations: res.data }))
-			.catch(err => console.log(err));
-	};
+		axios.get('https://replate-backend.herokuapp.com/api/donations')
+			.then(res => {
+				console.log('axios get donations', res.data);
+				this.setState({ donations: res.data });
+				console.log(this.state.donations);
+			})
+			.catch(err => {
+				console.log(err);
+				this.setState({
+					error:err,
+				})
+			});
+	}
+
+	addThingOne = () => {
+		let fakeObj = {
+			name: 'FFFFFF',
+			quantity_lbs: 29,
+			picked_up: false,
+			comment: 'fart',
+			business_id: 1,
+		}
+		axios.post('https://replate-backend.herokuapp.com/api/donations', fakeObj)
+			.then(res => {
+				console.log('ADDthingone', res);
+				this.getDonations();
+			})
+			.catch(err => {
+				console.log(err);
+				this.setState({
+					error:err,
+				});
+			});
+	}
+
+	editThingOne = () => {
+		let fakeObj = {
+			name: 'mMAMAMAMAM',
+			quantity_lbs: 10,
+			picked_up: false,
+			comment: 'needs to be picked up by 12/11/2019',
+			business_id: 1,
+		}
+		axios.put('https://replate-backend.herokuapp.com/api/donations/1', fakeObj)
+			.then(res => {
+				console.log('EDITthingone', res);
+				this.getDonations();
+			})
+			.catch(err => {
+				console.log(err);
+				this.setState({
+					error:err,
+				});
+			});
+	}
+
+	killThingOne = () => {
+		axios.delete('https://replate-backend.herokuapp.com/api/donations/1')
+			.then(res => {
+				console.log('KILLthingone', res);
+				this.getDonations();
+			})
+			.catch(err => {
+				console.log(err);
+				this.setState({
+					error:err,
+				});
+			});
+	}
 
 	// FAKE LOGIN HARD CODED for BUSINESS VIEW
 	fakeLogin = e => {
 		this.setState({
-			loggedin: 'business',
+			loggedin: 'volunteer',
 		});
-		window.history.pushState(null,null,'/business');
-	};
+		window.history.pushState(null,null,'/volunteer');
+	}
+
+	login = usertype => {
+		console.log('loginnnn',usertype);
+		this.setState(prevState => ({
+			...prevState,
+			loggedin: usertype,
+		}));
+		if (usertype === 'waiting') return;
+		window.history.pushState(null,null,`/${usertype}`)
+		this.getDonations();
+		// this.getFoodBanks();
+	}
 
 	logout = e => {
 		this.setState({
 			loggedin: '',
 		});
 		window.history.pushState(null,null,'/');
-	};
+		localStorage.clear();
+	}
 
 	newPickup = e => {
 		let postDonations = [...this.state.donations];
@@ -105,7 +172,7 @@ class App extends Component {
 				}));
 			}
 		});
-	};
+	}
 
 	removePickup = e => {
 		let thisId = Number(e.target.id);
@@ -123,22 +190,27 @@ class App extends Component {
 				}
 				else {
 					item.pickup = 'remove';
-					console.log(myPostDonations);
 					this.setState({
 						myDonations: [...myPostDonations],
 					});
 				}
 			}
 		});
-	};
+	}
 
 	render() {
 		return (
 			<div className="App">
+			
+
 			{/* DEFAULT VIEW >> LOGIN || SIGNUP */}
 				{!this.state.loggedin && ( 
 					<ViewDefault 
+						error={this.catchErr}
+						errorDisplay={this.state.error}
 						login={this.fakeLogin}
+						loginReal={this.login}
+						loggedin={this.state.loggedin}
 						donations={this.state.donations}
 						firstName={this.state['first_name']}
 						foodBankList={this.state.foodbanks}
@@ -152,10 +224,13 @@ class App extends Component {
 			{/* VOLUNTEER USER*/}
 				 {this.state.loggedin === 'volunteer' && (
 					 <ViewVolunteer
+					 	add={this.addThingOne}
 						donations={this.state.donations}
+						edit={this.editThingOne}
 						logout={this.logout}
 						firstName={this.state['first_name']}
 						foodBankList={this.state.foodbanks}
+						kill={this.killThingOne}
 						myDonations={this.state.myDonations}
 						newPickup={this.newPickup}
 						removePickup={this.removePickup}
@@ -180,4 +255,5 @@ class App extends Component {
 		);
 	}
 }
-export default App;
+// export default App;
+export default axiosWithAuth(App);
